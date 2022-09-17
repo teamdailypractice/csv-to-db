@@ -24,3 +24,17 @@
   * some of the rows does not match existing schema
 * getData(tablename1, tablename2, tablename3, selectColumns, joinColumns, filterCondition)
 
+## maven Project creation from command line
+
+```bash
+PROJECT_HOME='/d/git/csv-to-db'
+cd ${PROJECT_HOME}
+touch pom.xml
+mkdir -p src/main/java
+mkdir -p src/main/java/info/dailypractice
+touch src/main/java/info/dailypractice/Main.java
+mkdir -p src/main/resources
+
+mkdir -p test/main/java
+mkdir -p test/main/resources
+```
