@@ -14,6 +14,7 @@
 
 ## API Design - Draft
 
+* readTableSchema()
 * createTable(schema, tablename)
   * If tablename already exists, report error: Table already exists
 * createTable(schema, tablename, overwriteExisting)
@@ -35,6 +36,19 @@ mkdir -p src/main/java/info/dailypractice
 touch src/main/java/info/dailypractice/Main.java
 mkdir -p src/main/resources
 
-mkdir -p test/main/java
-mkdir -p test/main/resources
+mkdir -p test/java
+mkdir -p test/resources
+
+mkdir -p config
 ```
+
+## Build and run commands
+
+```bash
+mvnw spring-boot:run
+
+```
+
+## H2 database
+
+* Datatypes - <http://www.h2database.com/html/datatypes.html>
