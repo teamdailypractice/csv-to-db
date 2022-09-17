@@ -12,6 +12,7 @@
                 "type": "VARCHAR",
                 "length": "255"
             }
-        ]
+        ],
+        "primaryKey": ["id"]
     }
 ]

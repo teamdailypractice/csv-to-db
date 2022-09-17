@@ -19,6 +19,7 @@
   * If tablename already exists, report error: Table already exists
 * createTable(schema, tablename, overwriteExisting)
   * Existing table will be dropped. New table with the specified schema would be created
+  * Primary Key definition
 * LoadData(csvFilepath, tablename)
   * What are the exception scenarios?
   * csv file does not match table schema?

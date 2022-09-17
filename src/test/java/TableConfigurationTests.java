@@ -28,7 +28,8 @@ public class TableConfigurationTests {
                 "                \"type\": \"VARCHAR\",\n" +
                 "                \"length\": \"255\"\n" +
                 "            }\n" +
-                "        ]\n" +
+                "        ],\n" +
+                "\"primaryKey\": [\"id\"]" +
                 "    }";
 
         TableConfiguration tableConfiguration = null;
@@ -52,6 +53,9 @@ public class TableConfigurationTests {
         assertEquals(secondFieldSchema.get("type"), "VARCHAR");
         assertEquals(secondFieldSchema.get("length"), "255");
         assertEquals(1, 1);
+
+        assertEquals("id", tableConfiguration.getPrimaryKey().get(0));
+        assertEquals(1, tableConfiguration.getPrimaryKey().size());
 
     }
 }

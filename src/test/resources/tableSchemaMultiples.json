@@ -1,47 +1,56 @@
 [
-    {
-        "tableName": "employeeA",
-        "fields": [
-            {
-                "name": "id",
-                "type": "INTEGER",
-                "length": "-1"
-            },
-            {
-                "name": "name",
-                "type": "VARCHAR",
-                "length": "255"
-            }
-        ]
-    },
-    {
-        "tableName": "employeeB",
-        "fields": [
-            {
-                "name": "id",
-                "type": "INTEGER",
-                "length": "-1"
-            },
-            {
-                "name": "age",
-                "type": "INTEGER",
-                "length": "-1"
-            }
-        ]
-    },
-    {
-        "tableName": "employeeC",
-        "fields": [
-            {
-                "name": "id",
-                "type": "INTEGER",
-                "length": "-1"
-            },
-            {
-                "name": "postal_code",
-                "type": "VARCHAR",
-                "length": "10"
-            }
-        ]
-    }
+  {
+    "tableName": "employeeA",
+    "fields": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "length": "-1"
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR",
+        "length": "255"
+      }
+    ],
+    "primaryKey": [
+      "id"
+    ]
+  },
+  {
+    "tableName": "employeeB",
+    "fields": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "length": "-1"
+      },
+      {
+        "name": "age",
+        "type": "INTEGER",
+        "length": "-1"
+      }
+    ],
+    "primaryKey": [
+      "id"
+    ]
+  },
+  {
+    "tableName": "employeeC",
+    "fields": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "length": "-1"
+      },
+      {
+        "name": "postal_code",
+        "type": "VARCHAR",
+        "length": "10"
+      }
+    ],
+    "primaryKey": [
+      "id"
+    ]
+  }
 ]

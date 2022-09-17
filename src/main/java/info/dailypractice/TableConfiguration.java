@@ -8,6 +8,8 @@ public class TableConfiguration {
     private String tableName;
     private List<Map<String, String>> fields;
 
+    private List<String> primaryKey;
+
     public TableConfiguration() {
     }
 
@@ -20,12 +22,20 @@ public class TableConfiguration {
         return fields;
     }
 
+    public List<String> getPrimaryKey() {
+        return primaryKey;
+    }
+
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
 
     public void setFields(List<Map<String, String>> fields) {
         this.fields = fields;
+    }
+
+    public void setPrimaryKey(List<String> primaryKey) {
+        this.primaryKey = primaryKey;
     }
 
     @Override
