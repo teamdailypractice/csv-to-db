@@ -22,8 +22,9 @@
   * Primary Key definition
 * LoadData(csvFilepath, tablename)
   * What are the exception scenarios?
-  * csv file does not match table schema?
-  * some of the rows does not match existing schema
+  * csv file does not match table schema? - insert to table will throw error for all rows
+  * some of the rows does not match existing schema - insert to table will throw error for those rows
+  * what are the other exception scenarios?
 * getData(tablename1, tablename2, tablename3, selectColumns, joinColumns, filterCondition)
 
 ## maven Project creation from command line
