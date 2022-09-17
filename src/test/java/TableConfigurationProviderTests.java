@@ -49,4 +49,10 @@ public class TableConfigurationProviderTests {
 
         Assertions.assertTrue(thrown.getMessage().contains("Unrecognized field \"field\""));
     }
+    @Test
+    public void shouldHaveThreeTableConfigurations() throws IOException {
+        String filepath = "src/test/resources/tableSchemaMultiples.json";
+        TableConfigurationProvider tcp = new TableConfigurationProvider();
+        assertEquals(tcp.getTableConfiguration(filepath).size(), 3);
+    }
 }
