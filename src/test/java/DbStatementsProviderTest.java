@@ -1,7 +1,4 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import info.dailypractice.DbStatements;
+import info.dailypractice.DbStatementsProvider;
 import info.dailypractice.TableConfiguration;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +10,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DbStatementsTest {
+public class DbStatementsProviderTest {
 
     @Test
     public void jsonStringToPageConfigurationObject() {
@@ -31,7 +28,8 @@ public class DbStatementsTest {
 
         List<String> primaryKey = List.of("id");
         tc.setPrimaryKey(primaryKey);
-        String sqlCreateTable = DbStatements.getSqlCreateTable(tc);
+        DbStatementsProvider dbStatementsProvider = new DbStatementsProvider();
+        String sqlCreateTable = dbStatementsProvider.getSqlCreateTable(tc);
 
         //CREATE TABLE USER (ID INT, NAME VARCHAR(50));
         assertEquals("CREATE TABLE employee (id INTEGER, name VARCHAR(255), PRIMARY KEY(id));", sqlCreateTable);

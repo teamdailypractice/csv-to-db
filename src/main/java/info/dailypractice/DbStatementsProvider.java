@@ -1,11 +1,14 @@
 package info.dailypractice;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DbStatements {
     //CREATE TABLE USER (ID INT, NAME VARCHAR(50));
-    private static String getSqlPrimaryKey(List<String> primaryKey) {
+    private String getSqlPrimaryKey(List<String> primaryKey) {
         // , PRIMARY KEY(CLASS_CODE, DAY)
         StringBuilder primaryKeyDefinition = new StringBuilder();
         primaryKeyDefinition.append("PRIMARY KEY(");
@@ -21,7 +24,7 @@ public class DbStatements {
         return primaryKeyDefinition.toString();
     }
 
-    private static String getSqlFieldSchema(List<Map<String, String>> fields) {
+    private String getSqlFieldSchema(List<Map<String, String>> fields) {
         StringBuilder fieldDefinition = new StringBuilder();
         for (Map<String, String> field : fields) {
             String name = field.get("name");
@@ -37,7 +40,7 @@ public class DbStatements {
         return fieldDefinition.toString();
     }
 
-    public static String getSqlCreateTable(TableConfiguration tc) {
+    public String getSqlCreateTable(TableConfiguration tc) {
         String CREATE_TABLE = "CREATE TABLE ";
         String fieldSchemaSql = getSqlFieldSchema(tc.getFields());
         String primaryKeySql = getSqlPrimaryKey(tc.getPrimaryKey());
