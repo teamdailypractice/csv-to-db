@@ -1,0 +1,17 @@
+[
+    {
+        "tableName": "employee",
+        "field": [
+            {
+                "name": "id",
+                "type": "INTEGER",
+                "length": "-1"
+            },
+            {
+                "name": "name",
+                "type": "VARCHAR",
+                "length": "255"
+            }
+        ]
+    }
+]

@@ -36,8 +36,8 @@ mkdir -p src/main/java/info/dailypractice
 touch src/main/java/info/dailypractice/Main.java
 mkdir -p src/main/resources
 
-mkdir -p test/java
-mkdir -p test/resources
+mkdir -p src/test/java
+mkdir -p src/test/resources
 
 mkdir -p config
 ```
