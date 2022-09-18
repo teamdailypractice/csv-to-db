@@ -70,4 +70,9 @@ mvnw clean install -DskipTests
 ## Db First approach
 
 * From db tables generate java classes - <https://www.marcobehler.com/guides/jooq>
-* 
+
+
+## JdbcTemplate - Tips
+
+* `int count = jt.queryForInt("select count(*) from employee");`
+*
