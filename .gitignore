@@ -1,6 +1,12 @@
+# IDE/maven/gradle/Spring
 out
 target
-data-out
+
 
 spring-shell.log
 
+
+## application specific
+
+db
+data-out

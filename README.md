@@ -54,3 +54,20 @@ mvnw spring-boot:run
 ## H2 database
 
 * Datatypes - <http://www.h2database.com/html/datatypes.html>
+
+## Steps to run
+
+```bash
+
+
+mvnw spring-boot:run
+
+create-tables --tableSchemaFilepath D:/git/csv-to-db/config/tableSchema.json
+
+mvnw clean install -DskipTests
+```
+
+## Db First approach
+
+* From db tables generate java classes - <https://www.marcobehler.com/guides/jooq>
+* 

@@ -14,5 +14,37 @@
             }
         ],
         "primaryKey": ["id"]
+    },
+    {
+        "tableName": "employee_2",
+        "fields": [
+            {
+                "name": "id",
+                "type": "INTEGER",
+                "length": "-1"
+            },
+            {
+                "name": "age",
+                "type": "INTEGER",
+                "length": "-1"
+            }
+        ],
+        "primaryKey": ["id"]
+    },
+    {
+        "tableName": "employee_3",
+        "fields": [
+            {
+                "name": "id",
+                "type": "INTEGER",
+                "length": "-1"
+            },
+            {
+                "name": "primary_skill",
+                "type": "VARCHAR",
+                "length": "255"
+            }
+        ],
+        "primaryKey": ["id"]
     }
 ]
