@@ -55,6 +55,8 @@ public class ApplicationConfiguration {
         return new TableConfigurationProvider();
     }
 
+
+
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public ObjectMapper getObjectMapper() {

@@ -50,6 +50,8 @@ public class CsvFileReader {
         }
 
     }
+    //TODO: validateFileDataWithFileSchema - report invalid rows
+
 
     public List<String> getColumnNames() {
         var columnNames = new ArrayList<String>();
@@ -75,5 +77,8 @@ public class CsvFileReader {
             Collections.addAll(columnNames, trailerRowColumns);
         }
         return columnNames;
+    }
+
+    public void getValidRows() {
     }
 }
