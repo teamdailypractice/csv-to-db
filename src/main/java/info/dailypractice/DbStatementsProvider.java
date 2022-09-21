@@ -61,7 +61,10 @@ public class DbStatementsProvider {
     }
 
     private String getSqlStringForValue(String input) {
-        return "'" + input.replace("'", "\'") + "'";
+        String escapeSingleQuotes = input.replace("'", "\'");
+        String escapeDoubleQuotes = escapeSingleQuotes.replace('"', '\"');
+        //TODO: Any other characters to be handled?
+        return "'" + escapeDoubleQuotes + "'";
     }
 
     private String getSqlFieldValues(List<Map<String, String>> fields, String[] data) throws Exception {
@@ -81,13 +84,16 @@ public class DbStatementsProvider {
                         finalValue = fieldValue;
                     } else {
                         finalValue = "NULL";
+                        //TODO: Is there any default value in configuration file for INTEGER
                     }
                 }
                 if (type.equals("VARCHAR")) {
                     if (fieldValue.length() > 0 && (!fieldValue.equalsIgnoreCase("NULL"))) {
-                        finalValue = fieldValue;
-                    } else {
                         finalValue = getSqlStringForValue(fieldValue);
+
+                    } else {
+                        finalValue = "NULL";
+                        //TODO: Is there any default value in configuration file for VARCHAR
                     }
                 }
                 fieldValues.append(finalValue);

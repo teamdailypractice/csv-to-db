@@ -22,7 +22,7 @@ public class DbTablesService {
     }
 
     @Transactional
-    public void create(String userId, Integer amount) {
+    public void insertIntoTable() {
         System.out.println("Is a database transaction open? = " +
                 TransactionSynchronizationManager.isActualTransactionActive());
         jdbcTemplate.update(connection -> {
@@ -30,9 +30,9 @@ public class DbTablesService {
                     "insert into invoices (user_id, pdf_url, amount) values " +
                             "(?, ?, ?)"
             );
-            ps.setString(1, userId);
-//            ps.setString(2, generatedPdfUrl);
-            ps.setInt(3, amount);
+//            parameterIndex – the first parameter is 1, the second is 2, ..
+//            ps.setString(1, userId);
+//            ps.setInt(2, amount);
             return ps;
         });
     }

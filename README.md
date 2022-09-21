@@ -2,7 +2,8 @@
 
 * Load one, two or more CSV file to H2 database.
 * Why?
-* Its easy to analyse data using SQL
+* It is easy to analyse data using SQL
+* Database: H2 database - version: 2.2.214
 
 ## Steps
 
