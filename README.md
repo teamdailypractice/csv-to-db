@@ -59,11 +59,10 @@ mvnw spring-boot:run
 ## Steps to run
 
 ```bash
-
-
 mvnw spring-boot:run
 
 create-tables --tableSchemaFilepath D:/git/csv-to-db/config/tableSchema.json
+load-data --csvFilepath D:/git/csv-to-db/data/employee.csv --tableName employee
 
 mvnw clean install -DskipTests
 ```

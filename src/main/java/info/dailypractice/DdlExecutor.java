@@ -9,6 +9,7 @@ import org.springframework.shell.standard.ShellMethod;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @ShellComponent
@@ -19,7 +20,7 @@ public class DdlExecutor {
     private TableConfigurationProvider tableConfigurationProvider;
     private DbStatementsProvider dbStatementsProvider;
     private DbTablesService dbTablesService;
-    private Map<String, TableConfiguration> tableConfigurationMap = new HashMap<>();
+    private Map<String, TableConfiguration> tableConfigurationMap = new HashMap<String, TableConfiguration>();
 
     public DdlExecutor(TableConfigurationProvider tableConfigurationProvider,
                        DbStatementsProvider dbStatementsProvider,
@@ -36,7 +37,7 @@ public class DdlExecutor {
         tableConfigurationProvider.getTableConfiguration(tableSchemaFilepath).
                 forEach(tableConfiguration -> {
                     try {
-                        tableConfigurationMap.put(tableConfiguration.getTableName(), tableConfiguration);
+                        tableConfigurationMap.putIfAbsent(tableConfiguration.getTableName(), tableConfiguration);
                         doProcess(tableConfiguration);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -52,18 +53,29 @@ public class DdlExecutor {
         System.out.println("Table: " + tc.getTableName() + " - created");
     }
 
-    private void loadData(String csvFilepath, String tableName) throws Exception {
-
+    @ShellMethod("load data from the file to table")
+    public void loadData(String csvFilepath, String tableName) throws Exception {
         if (tableConfigurationMap.size() == 0) {
             throw new Exception("createTables command must be run before running loadData");
         }
+        System.out.println("tableConfigurationMap: " + tableConfigurationMap.toString());
+        System.out.println("tableConfigurationMap size: " + tableConfigurationMap.size());
+        System.out.println("tableName :" + tableName);
         TableConfiguration tableConfiguration = tableConfigurationMap.get(tableName);
+        System.out.println("tableConfiguration: " + tableConfiguration);
         if (tableConfiguration == null) {
             throw new Exception(String.format("Table: %s schema is not defined in the configuration file", tableName));
         }
         //Validate schema with data - Read CSV file
-        CsvFileReader reader = new CsvFileReader(csvFilepath);
-        reader.getValidRows();
+        CsvFileReader reader = new CsvFileReader(csvFilepath, tableConfiguration);
+        List<String[]> rows = reader.getValidRows();
+        LOG.info("File : " + csvFilepath + " valid rows count: " + rows.size());
+        for (String[] row : rows) {
+            String sqlStatement = dbStatementsProvider.getSqlInsertInto(tableConfiguration, row);
+            dbTablesService.insertIntoTable(sqlStatement);
+        }
+        LOG.info("table: " + tableConfiguration.getTableName() + "number of rows inserted: " + rows.size());
+
     }
 
 

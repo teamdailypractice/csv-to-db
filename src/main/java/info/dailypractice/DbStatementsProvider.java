@@ -97,12 +97,13 @@ public class DbStatementsProvider {
                     }
                 }
                 fieldValues.append(finalValue);
+                fieldValues.append(",");
             }
 
         } else {
             throw new Exception("Row data - columns mismatch");
         }
-        return fieldValues.toString();
+        return fieldValues.substring(0, fieldValues.length() - 1);
     }
 
     public String getSqlCreateTable(TableConfiguration tc) {
@@ -115,7 +116,7 @@ public class DbStatementsProvider {
     public String getSqlInsertInto(TableConfiguration tc, String[] data) throws Exception {
         String INSERT_INTO_TABLE = "INSERT INTO ";
         String fieldValues = getSqlFieldValues(tc.getFields(), data);
-        String sqlInsertStatement = INSERT_INTO_TABLE + tc.getTableName() + "VALUES (" + fieldValues + ");";
+        String sqlInsertStatement = INSERT_INTO_TABLE + tc.getTableName() + " VALUES (" + fieldValues + ");";
         LOG.info(sqlInsertStatement);
         return sqlInsertStatement;
     }

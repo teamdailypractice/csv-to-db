@@ -22,6 +22,11 @@ public class DbTablesService {
     }
 
     @Transactional
+    public void insertIntoTable(String sqlStatement) throws DataAccessException {
+        jdbcTemplate.execute(sqlStatement);
+    }
+
+    @Transactional
     public void insertIntoTable() {
         System.out.println("Is a database transaction open? = " +
                 TransactionSynchronizationManager.isActualTransactionActive());
